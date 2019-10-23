@@ -341,3 +341,17 @@ export const SetSortParam = () => {
             break;
     }
 }
+
+/**
+ * 現在のURLからpathを取得し、ナビのリンク先URLと比較してカレント表示用のクラスを付与します
+ */
+_setCurrent() {
+    var pathArray= window.location.pathname.split(/\//);
+    var pageType = pathArray[1];
+    $('.fn-setCurrent').find('a').each(function(index, list){
+        var menuType = $(list).attr('href').replace(/\//g, '');
+        if (pageType === menuType) {
+            $(list).parent().addClass('is-selected');
+        }
+    });
+}
